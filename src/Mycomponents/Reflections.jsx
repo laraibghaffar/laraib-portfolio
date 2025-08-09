@@ -153,6 +153,7 @@ export default function Reflections() {
                     width: "20px",
                     marginLeft: "10px",
                   }}
+                  
                 />
               )}
             </div>

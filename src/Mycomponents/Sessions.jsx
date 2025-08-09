@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 export default function Session() {
+  // Helper to fix image paths for GitHub Pages
+  const imgPath = (file) => `${import.meta.env.BASE_URL}${file}`;
+
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -13,7 +16,6 @@ export default function Session() {
 
   const [input, setInput] = useState("");
 
-  // ✅ Persistent Dark Mode State
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem("darkMode");
     return savedTheme === "true";
@@ -22,7 +24,7 @@ export default function Session() {
   const toggleTheme = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
-    localStorage.setItem("darkMode", newTheme); // ✅ Save to localStorage
+    localStorage.setItem("darkMode", newTheme);
   };
 
   useEffect(() => {
@@ -33,7 +35,6 @@ export default function Session() {
     }
   }, [isDark]);
 
-  // 🔹 Send message
   const handleSend = () => {
     if (input.trim() === "") return;
 
@@ -74,9 +75,8 @@ export default function Session() {
         </div>
         <div className="main-right">
           <div className="one">
-            {/* ✅ Toggle Button */}
             <img
-              src="/button.png"
+              src={imgPath("button.png")}
               alt="button"
               id="button"
               onClick={toggleTheme}
@@ -84,7 +84,7 @@ export default function Session() {
             />
           </div>
           <div className="two">
-            <img src="/circle-flags_uk.png" alt="flag" id="button" />
+            <img src={imgPath("circle-flags_uk.png")} alt="flag" id="button" />
             <h3>USA</h3>
           </div>
         </div>
@@ -93,9 +93,9 @@ export default function Session() {
       {/* 🔷 Messages Area */}
       <div className="massage-bar-container">
         <div className="download-session">
-          <img src="/star.png" className="starrr-icon" alt="star" />
+          <img src={imgPath("star.png")} className="starrr-icon" alt="star" />
           <button className="Download">
-            <img src="/erro.png" className="erro-icon" alt="icon" />
+            <img src={imgPath("erro.png")} className="erro-icon" alt="icon" />
             Download
           </button>
           <div className="menu-icon" style={{ fontSize: "24px", color: "black" }}>⋮</div>
@@ -144,7 +144,7 @@ export default function Session() {
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
         />
         <img
-          src="/msgg.png"
+          src={imgPath("msgg.png")}
           alt="msg icon"
           className="msgg-icon"
           onClick={handleSend}

@@ -1,6 +1,7 @@
+// index.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import App from "./App.jsx";
 import Welcome from "./Mycomponents/Welcome.jsx";
@@ -17,14 +18,13 @@ import Question5 from "./Mycomponents/Question5.jsx";
 import Home from "./Mycomponents/Home.jsx";
 import Sessions from "./Mycomponents/Sessions.jsx";
 import Reflections from "./Mycomponents/Reflections.jsx";
-import Upload from "./Mycomponents/Upload.jsx"; // ✅ Make sure path casing matches
-
+import Upload from "./Mycomponents/Upload.jsx";
 import ProtectedRoute from "./Mycomponents/ProtectedRoute.jsx";
 
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<Welcome />} />
       <Route path="/StartSessions" element={<StartSessions />} />
@@ -38,7 +38,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="question-5" element={<Question5 />} />
       </Route>
 
-      {/* ✅ Dashboard layout routes (includes sidebar) */}
       <Route
         path="/App"
         element={
@@ -52,7 +51,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="Reflections" element={<Reflections />} />
       </Route>
 
-      {/* ✅ Upload page without sidebar layout */}
       <Route
         path="/Upload"
         element={
@@ -62,5 +60,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         }
       />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 export default function MainContent() {
+  // Helper to get correct image path in GitHub Pages
+  const imgPath = (file) => `${import.meta.env.BASE_URL}${file}`;
+
   const [isDark, setIsDark] = useState(() => {
-    // 🟡 Get initial value from localStorage
     const savedTheme = localStorage.getItem("darkMode");
     return savedTheme === "true";
   });
@@ -10,11 +12,10 @@ export default function MainContent() {
   const toggleTheme = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
-    localStorage.setItem("darkMode", newTheme); // ✅ Save to localStorage
+    localStorage.setItem("darkMode", newTheme);
   };
 
   useEffect(() => {
-    // ✅ Apply class based on isDark
     if (isDark) {
       document.body.classList.add("dark-mode");
     } else {
@@ -35,15 +36,15 @@ export default function MainContent() {
         <div className="main-right">
           <div className="one">
             <img
-              src="/button.png"
-              alt="button"
+              src={imgPath("button.png")}
+              alt="Toggle Theme"
               id="button"
               onClick={toggleTheme}
               style={{ cursor: "pointer" }}
             />
           </div>
           <div className="two">
-            <img src="/circle-flags_uk.png" alt="flag" id="button" />
+            <img src={imgPath("circle-flags_uk.png")} alt="flag" id="button" />
             <h3>USA</h3>
           </div>
         </div>
@@ -56,7 +57,7 @@ export default function MainContent() {
         <div className="card">
           {[1, 2, 3].map((_, i) => (
             <div className="card-box" key={i}>
-              <img src="/win.png" alt="card" id="card" />
+              <img src={imgPath("win.png")} alt="card" id="card" />
               <h4>Give me writing prompt</h4>
             </div>
           ))}
@@ -72,7 +73,7 @@ export default function MainContent() {
             className="icon-brain"
           />
           <input type="text" placeholder="What's on your mind? ..." />
-          <img src="/msgg.png" alt="msg icon" className="msgg-icon" />
+          <img src={imgPath("msgg.png")} alt="msg icon" className="msgg-icon" />
         </div>
 
         <div className="text">
